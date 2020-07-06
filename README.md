@@ -1,0 +1,34 @@
+# RMIT COSC1125/1127 AI20 - Pacman Capture the Flag Project Template
+
+This repository is a template for students to fork their own repositories where they will do their own work and submission for the [Pacman Capture the Flag](http://ai.berkeley.edu/contest.html) project. We are very grateful to UC Berkeley CS188 for developing and sharing their system with us for teaching and learning purposes.
+
+You must ALWAYS keep your fork **private** and **never share it** with anybody in or outside the course, except your teammates, _even after the course is completed_. Please respect the [authors request](http://ai.berkeley.edu/project_instructions.html): 
+
+> **_Please do not distribute or post solutions to any of the projects._**
+
+
+Remember to complete the [TEAM.md](TEAM.md) file with the team details of the submission.
+
+Read [this documentation about the code of the contest](CONTEST.md)
+
+Project should be developed as per instructions in the project specification.
+
+**Hope you enjoy this project!**
+
+
+### Academic Dishonesty:
+
+This is a 3rd year advanced course, so we expect full professionalism and ethical conduct.  Plagiarism is a serious issue. **We trust you; please don't let us down**. The staff take academic misconduct very seriously. Suspected collusion or plagiarism will be dealt with according to [RMIT Academic Integrity policy](https://www.rmit.edu.au/students/student-essentials/rights-and-responsibilities/academic-integrity).
+
+We expect every student taking this course to adhere to the **AI20 Course Code of Honour** under which every learner-student should:
+
+* Submit their own original work.
+* Do not share answers with others.
+* Report suspected violations.
+* Engage in any other activities that will dishonestly improve their results or dishonestly improve or damage the results of others.
+
+Unethical behaviour is extremely serious and consequences are serious and painful for everyone. We expect enrolled students/learners to take full **ownership** of your work and **respect** the work of teachers and other students.
+
+For more information and specific guidelines please refer to [this answer in the course FAQ](https://docs.google.com/document/d/17uVenkNdu5kKTzS8b_Pxkp5jAxNXrQCeDlxDf0yqwvQ/edit?pli=1#heading=h.7hcyqgqlwxpr) 
+
+
