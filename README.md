@@ -9,7 +9,7 @@ You must ALWAYS keep your fork **private** and **never share it** with anybody i
 
 Remember to complete the [TEAM.md](TEAM.md) file with the team details of the submission.
 
-Read [this documentation about the code of the contest](CONTEST.md)
+Read [CONTEST.md](CONTEST.md) file for detailed information and documentation about the code of the contest.
 
 Project should be developed as per instructions in the project specification.
 
