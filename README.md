@@ -1,4 +1,4 @@
-# RMIT COSC1125/1127 AI20 - Pacman Capture the Flag Project Template
+# Pacman Capture the Flag Project Template
 
 This repository is a template for students to fork their own repositories where they will do their own work and submission for the [Pacman Capture the Flag](http://ai.berkeley.edu/contest.html) project. We are very grateful to UC Berkeley CS188 for developing and sharing their system with us for teaching and learning purposes.
 
