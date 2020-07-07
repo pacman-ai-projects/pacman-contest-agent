@@ -18,17 +18,14 @@ Project should be developed as per instructions in the project specification.
 
 ### Academic Dishonesty:
 
-This is a 3rd year advanced course, so we expect full professionalism and ethical conduct.  Plagiarism is a serious issue. **We trust you; please don't let us down**. The staff take academic misconduct very seriously. Suspected collusion or plagiarism will be dealt with according to [RMIT Academic Integrity policy](https://www.rmit.edu.au/students/student-essentials/rights-and-responsibilities/academic-integrity).
+This is an advanced course, so we expect full professionalism and ethical conduct.  Plagiarism is a serious issue. **We trust you; please don't let us down**. The staff take academic misconduct very seriously. Suspected collusion or plagiarism will be dealt with according to the **University Academic Integrity policy**.
 
-We expect every student taking this course to adhere to the **AI20 Course Code of Honour** under which every learner-student should:
+We expect every student taking this course to adhere to it **Code of Honour** under which every learner-student should:
 
 * Submit their own original work.
 * Do not share answers with others.
 * Report suspected violations.
 * Engage in any other activities that will dishonestly improve their results or dishonestly improve or damage the results of others.
 
-Unethical behaviour is extremely serious and consequences are serious and painful for everyone. We expect enrolled students/learners to take full **ownership** of your work and **respect** the work of teachers and other students.
-
-For more information and specific guidelines please refer to [this answer in the course FAQ](https://docs.google.com/document/d/17uVenkNdu5kKTzS8b_Pxkp5jAxNXrQCeDlxDf0yqwvQ/edit?pli=1#heading=h.7hcyqgqlwxpr) 
-
+Unethical behaviour is extremely serious and consequences are painful for everyone. We expect enrolled students/learners to take full **ownership** of your work and **respect** the work of teachers and other students.
 
