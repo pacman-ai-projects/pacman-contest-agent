@@ -10,9 +10,9 @@
 
 **Team members:**
 
-* Student 1's RMIT Student number - Full Name - Student email - Student Github id
-* Student 2's RMIT Student number - Full Name - Student email - Student Github id
-* Student 3's RMIT Student number - Full Name - Student email - Student Github id
+* Student 1's Student number - Full Name - Student email - Student Github id
+* Student 2's Student number - Full Name - Student email - Student Github id
+* Student 3's Student number - Full Name - Student email - Student Github id
 
 Replace the lines above with the correct details of members. Delete the lines that are not used (i.e., if there is only 1 or 2 members).
 
