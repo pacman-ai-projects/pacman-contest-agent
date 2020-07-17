@@ -1,8 +1,8 @@
 # Pacman Capture the Flag Project Template
 
-This repository is a template for students to fork their own repositories where they will do their own work and submission for the [Pacman Capture the Flag](http://ai.berkeley.edu/contest.html) project. We are very grateful to UC Berkeley CS188 for developing and sharing their system with us for teaching and learning purposes.
+This repository is a template for students to fork for their work and submission of the [Pacman Capture the Flag](http://ai.berkeley.edu/contest.html) project. We are very grateful to UC Berkeley CS188 for developing and sharing their system with us for teaching and learning purposes.
 
-You must ALWAYS keep your fork **private** and **never share it** with anybody in or outside the course, except your teammates, _even after the course is completed_. Please respect the [authors request](http://ai.berkeley.edu/project_instructions.html): 
+You must ALWAYS keep your fork **private** and **never share it** with anybody in or outside the course, except your teammates, _even after the course is completed_. You are not allowed to make another repository outside the provided GitHub Classroom without the written permission of the teaching staff. Please respect the [authors request](http://ai.berkeley.edu/project_instructions.html): 
 
 > **_Please do not distribute or post solutions to any of the projects._**
 
@@ -28,4 +28,3 @@ We expect every student taking this course to adhere to it **Code of Honour** un
 * Engage in any other activities that will dishonestly improve their results or dishonestly improve or damage the results of others.
 
 Unethical behaviour is extremely serious and consequences are painful for everyone. We expect enrolled students/learners to take full **ownership** of your work and **respect** the work of teachers and other students.
-
