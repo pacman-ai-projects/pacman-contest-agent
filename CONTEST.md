@@ -239,7 +239,7 @@ You are free to use any techniques you want, but will need to respect the provid
 
 ### Warning: 
 
-If one of your agents produces any stdout/stderr output during its games in the any tournament (preliminary or final), that output will be included in the contest results posted on the website. Additionally, in some cases a stack trace may be shown among this output in the event that one of your agents throws an exception. You should design your code in such a way that this does not expose any information that you wish to keep confidential.
+If one of your agents produces any `stdout`/`stderr` output during its games in the any tournament (preliminary or final), that output will be included in the contest results posted on the website. Additionally, in some cases a stack trace may be shown among this output in the event that one of your agents throws an exception. You should design your code in such a way that this does not expose any information that you wish to keep confidential.
 
 
 ## Official Tournaments
@@ -252,7 +252,7 @@ We will try to run **pre-contest feedback tournaments frequently**, if possible 
 
 The **layouts** used in the tournament will be drawn from both the default layouts as well as randomly generated layouts each night. All layouts are symmetric, and the team that moves first is randomly chosen. 
 
-The **results** of each tournament (pre-contest, preliminary, and final) will be published on a web-page where you will be able to see the overall rankings and scores for each match. You can also download replays, the layouts used, and the stdout / stderr logs for each agent.
+The **results** of each tournament (pre-contest, preliminary, and final) will be published on a web-page where you will be able to see the overall rankings and scores for each match. You can also download replays, the layouts used, and the `stdout`/`stderr` logs for each agent.
 
 ### Software, resources, tips
 
