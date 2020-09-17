@@ -860,13 +860,12 @@ def readCommand( argv ):
   if options.replay != None:
     print('Replaying recorded game %s.' % options.replay)
     import pickle
-    recorded = pickle.load(open(options.replay,'rb'),encoding="bytes")
+    recorded = pickle.load(open(options.replay,'rb'),encoding="utf-8")
     recorded['display'] = args['display']
     recorded['delay'] = options.delay_step
     recorded['redTeamName'] = options.red
     recorded['blueTeamName'] = options.blue
     recorded['waitEnd'] = False
-
     replayGame(**recorded)
     sys.exit(0)
 
@@ -874,7 +873,7 @@ def readCommand( argv ):
   if options.replayq != None:
     print('Replaying recorded game %s.' % options.replay)
     import pickle
-    recorded = pickle.load(open(options.replayq,'rb'),encoding="bytes")
+    recorded = pickle.load(open(options.replayq,'rb'), encoding="utf-8")
     recorded['display'] = args['display']
     recorded['delay'] = 0.0
     recorded['redTeamName'] = options.red
@@ -1102,6 +1101,7 @@ if __name__ == '__main__':
   """
   start_time = time.time()
   options = readCommand( sys.argv[1:] ) # Get game components based on input
+  print(options)
   games = runGames(**options)
 
   save_score(games[0])
