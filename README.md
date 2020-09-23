@@ -15,6 +15,8 @@ Read [CONTEST.md](CONTEST.md) file for detailed information and documentation ab
 
 Project should be developed as per instructions in the project specification.
 
+Script `replay.py` provides a flexible way to re-run games stored under `replays/` folder. 
+
 **Hope you enjoy this project!**
 
 
