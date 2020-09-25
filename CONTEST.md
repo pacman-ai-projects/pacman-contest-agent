@@ -279,7 +279,7 @@ motion;
     Use `--help` to check all the options.
      
 * Do *NOT* use the current working directory to write temporary files; instead, redirect all output to your own folder `./teams/<your_teamname>/`. For example, if you use a planner online, and generate PDDL files and solutions, redirect your planner call, solution outputs, etc., to your own folder. You can use Python code to do it automatically, or you can hardcode it assuming that your team will be located in `./teams/<your_teamname>/` folder.
-* If you want to use any other 3rd-party executable please discuss with us before submission. You can assume that `TensorFlow`, `keras`, `sklearn`, `numpy`, `scipy` and `neat-python` libraries are installed in our running environment, using the latest version available in Ubuntu 18.04. Planner `ff` executable version 2.1 of the [Metric-FF planner](https://fai.cs.uni-saarland.de/hoffmann/metric-ff.html) will be available in `/usr/local/bin`.
+* If you want to use any other 3rd-party executable please discuss with us before submission. You can assume that `TensorFlow`, `keras`, `py_trees`, `sklearn`, `numpy`, `scipy` and `neat-python` libraries are installed in our running environment, using the latest version available in Ubuntu 18.04. Planner `ff` executable version 2.1 of the [Metric-FF planner](https://fai.cs.uni-saarland.de/hoffmann/metric-ff.html) will be available in `/usr/local/bin`.
 
 ### Teams: 
 
