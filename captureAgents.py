@@ -147,8 +147,7 @@ class CaptureAgent(Agent):
     If you subclass CaptureAgent, you shouldn't need to override this method.  It
     takes care of appending the current gameState on to your observation history
     (so you have a record of the game states of the game) and will call your
-    choose action method if you're in a state (rather than halfway through your last
-    move - this occurs because Pacman agents move half as quickly as ghost agents).
+    choose action method if you're in a state.
 
     """
     self.observationHistory.append(gameState)
