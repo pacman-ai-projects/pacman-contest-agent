@@ -264,12 +264,19 @@ The **results** of each tournament (pre-contest, preliminary, and final) will be
 
     please make sure your `AgentFactory` is defined in `myTeam.py`.
 
-* Your code will be copied into a directory called `teams/<your_teamname>/` in the contest package. This means that if you import from other files outside `myTeam.py` they will not be found unless you tell Python to look in your team dir. You can do so by having the following code on top of your `myTeam.py`:
+* You may have coded supported files that you will import in your `myTeam.py`, for example a module  `abc.py`. In order for the contest script to find it you need to do it this way:
 
-    ```python
-    import sys
-    sys.path.append(’teams/<your team>/’)
-    ```
+```python
+import os
+import sys
+
+cd = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(cd)
+
+import abc 
+```
+
+If you do not append that to the sys path, your `abc.py` module will not be found and your agent will crash.
 
 * We have added some useful options:
      * `--delay` to slow down the execution if you want to visualize in slow
@@ -277,6 +284,8 @@ motion;
      * `--record` or `--replay`. 
      
     Use `--help` to check all the options.
+
+* Check the `replay.py` script to list and replay individual games in a convenient manner.
      
 * Do *NOT* use the current working directory to write temporary files; instead, redirect all output to your own folder `./teams/<your_teamname>/`. For example, if you use a planner online, and generate PDDL files and solutions, redirect your planner call, solution outputs, etc., to your own folder. You can use Python code to do it automatically, or you can hardcode it assuming that your team will be located in `./teams/<your_teamname>/` folder.
 * If you want to use any other 3rd-party executable please discuss with us before submission. You can assume that `TensorFlow`, `keras`, `py_trees`, `sklearn`, `numpy`, `scipy` and `neat-python` libraries are installed in our running environment, using the latest version available in Ubuntu 18.04. Planner `ff` executable version 2.1 of the [Metric-FF planner](https://fai.cs.uni-saarland.de/hoffmann/metric-ff.html) will be available in `/usr/local/bin`.
