@@ -347,8 +347,8 @@ def halfList(l, grid, red):
   halfway = grid.width // 2
   newList = []
   for x,y in l:
-    if red and x <= halfway: newList.append((x,y))
-    elif not red and x > halfway: newList.append((x,y))
+    if red and x < halfway: newList.append((x,y))
+    elif not red and x >= halfway: newList.append((x,y))
   return newList
 
 ############################################################################
