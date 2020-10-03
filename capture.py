@@ -1038,13 +1038,14 @@ def replayGame( layout, agents, actions, display, length, redTeamName, blueTeamN
     display.finish()
 
 
-def runGames( layouts, agents, display, length, numGames, record, numTraining, redTeamName, blueTeamName, muteAgents=False, catchExceptions=False, delay_step=0):
+def runGames(layouts, agents, display, length, numGames, record, numTraining, redTeamName, blueTeamName,
+             muteAgents=False, catchExceptions=False, delay_step=0):
 
   rules = CaptureRules()
   games = []
 
   if numTraining > 0:
-    print ('Playing %d training games' % numTraining)
+    print (f'Playing {numTraining} training games')
 
   for i in range( numGames ):
     beQuiet = i < numTraining
@@ -1066,7 +1067,8 @@ def runGames( layouts, agents, display, length, numGames, record, numTraining, r
       import time, pickle, game
       #fname = ('recorded-game-%d' % (i + 1)) +  '-'.join([str(t) for t in time.localtime()[1:6]])
       #f = file(fname, 'w')
-      components = {'layout': layout, 'agents': [game.Agent() for a in agents], 'actions': g.moveHistory, 'length': length, 'redTeamName': redTeamName, 'blueTeamName':blueTeamName }
+      components = {'layout': layout, 'agents': [game.Agent() for a in agents], 'actions': g.moveHistory,
+                    'length': length, 'redTeamName': redTeamName, 'blueTeamName': blueTeamName}
       #f.close()
       print("recorded")
       g.record = pickle.dumps(components)
@@ -1102,6 +1104,7 @@ if __name__ == '__main__':
   start_time = time.time()
   options = readCommand( sys.argv[1:] ) # Get game components based on input
   print(options)
+
   games = runGames(**options)
 
   save_score(games[0])
