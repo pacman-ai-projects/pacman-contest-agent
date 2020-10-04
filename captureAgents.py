@@ -15,7 +15,7 @@
 """
   Interfaces for capture agents and agent factories
 """
-
+import random
 from game import Agent
 import distanceCalculator
 from util import nearestPoint
@@ -99,6 +99,7 @@ class CaptureAgent(Agent):
     self.distancer.getDistance(p1, p2)
     """
     self.red = gameState.isOnRedTeam(self.index)
+    self.registerTeam(self.getTeam(gameState))
     self.distancer = distanceCalculator.Distancer(gameState.data.layout)
 
     # comment this out to forgo maze distance computation and use manhattan distances
