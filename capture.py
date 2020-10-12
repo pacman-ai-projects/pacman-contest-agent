@@ -803,6 +803,8 @@ def readCommand( argv ):
                     help=default('Number of games to play'), default=1)
   parser.add_option('-f', '--fixRandomSeed', action='store_true',
                     help='Fixes the random seed to always play the same game', default=False)
+  parser.add_option('--setRandomSeed', type='str',
+                    help='Sets the random seed to a the given string')
   parser.add_option('--record', action='store_true',
                     help='Writes game histories to a file (named by the time they were played)', default=False)
   
@@ -850,7 +852,11 @@ def readCommand( argv ):
   args['redTeamName'] = options.red_name
   args['blueTeamName'] = options.blue_name
 
-  if options.fixRandomSeed: random.seed('cs188')
+  if options.fixRandomSeed:
+    random.seed('cs188')
+
+  if options.setRandomSeed:
+    random.seed(options.setRandomSeed)
 
   if options.recordLog:
     sys.stdout = open('log-0', 'w')
