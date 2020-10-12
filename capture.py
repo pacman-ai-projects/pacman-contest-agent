@@ -503,11 +503,11 @@ class AgentRules:
         redCount = 0
         blueCount = 0
         for index in range(state.getNumAgents()):
-          agentState = state.data.agentStates[index]
+          agent = state.data.agentStates[index]
           if index in state.getRedTeamIndices():
-            redCount += agentState.numReturned
+            redCount += agent.numReturned
           else:
-            blueCount += agentState.numReturned
+            blueCount += agent.numReturned
         if redCount >= (TOTAL_FOOD/2) - MIN_FOOD or blueCount >= (TOTAL_FOOD/2) - MIN_FOOD:
           state.data._win = True
 
