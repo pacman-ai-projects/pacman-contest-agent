@@ -1113,7 +1113,8 @@ if __name__ == '__main__':
 
   games = runGames(**options)
 
-  save_score(games[0])
+  if games:
+    save_score(games[0])
   print('\nTotal Time Game: %s'% round(time.time() - start_time, 0))
   # import profile
   # profile.run('runGames( **options )', 'profile')
