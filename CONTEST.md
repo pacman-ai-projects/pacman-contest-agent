@@ -37,10 +37,6 @@ This is an adapted version from the [official contest page](http://ai.berkeley.e
      * [Prize Summary:](#prize-summary)
   * [Acknowledgements](#acknowledgements)
 
-
-
-
-
 ## Introduction
 
 The course contest involves a multi-player capture-the-flag variant of Pacman, where agents control both Pacman and ghosts in coordinated team-based strategies. Your team will try to eat the food on the far side of the map, while defending the food on your home side. 
@@ -127,15 +123,23 @@ agents for a description of the agents invoked above. The only team that we prov
 $ python3 capture.py -r baselineTeam -b baselineTeam
 ```
 
-which specifies that the red team `-r` and the blue team `-b` are both created from `baselineTeam.py`. To control one of the four agents with the keyboard, pass the appropriate option:
+which specifies that the red team `-r` and the blue team `-b` are both created from `baselineTeam.py`.
 
-```bash
+To specify agents elsewhere:
+
+```shell
+$ python3 capture.py -r path/to/red/team/myTeam.py -b path/to/blue/team/myTeam.py
+```
+
+To control one of the four agents with the keyboard, pass the appropriate option:
+
+```shell
 $ python capture.py --keys0
 ```
 
 The arrow keys control your character, which will change from ghost to Pacman when crossing the center line.
 
-###  Layouts
+### Layouts
 
 By default, all games are run on the `defaultcapture` layout. To test your agent on other layouts, use the `-l` option. In particular, you can generate random layouts by specifying `RANDOM[seed]`. For example, `-l RANDOM13` will use a map randomly generated with seed 13.
 
@@ -143,12 +147,11 @@ By default, all games are run on the `defaultcapture` layout. To test your agent
 
 Unlike project 2, an agent now has the more complex job of trading off offense versus defense and effectively functioning as both a ghost and a Pacman in a team setting. Furthermore, the limited information provided to your agent will likely necessitate some probabilistic tracking (like project 4). Finally, the added time limit of computation introduces new challenges.
 
-### Baseline Team: 
+### Baseline Team:
 
-To kickstart your agent design, we have provided you with a team of two baseline agents, defined in `baselineTeam.py`. They are both quite bad. The `OffensiveReflexAgent` moves toward the closest food on the opposing side. The `DefensiveReflexAgent` wanders around on its own side and tries to chase down invaders it happens to see.
+To kick-start your agent design, we have provided you with a team of two baseline agents, defined in `baselineTeam.py`. They are both quite bad. The `OffensiveReflexAgent` moves toward the closest food on the opposing side. The `DefensiveReflexAgent` wanders around on its own side and tries to chase down invaders it happens to see.
 
-
-### Interface: 
+### Interface:
 
 The `GameState` in `capture.py` should look familiar, but contains new methods like `getRedFood`, which gets a grid of food on the red side (note that the grid is the size of the board, but is only true
 for cells on the red side with food). Also, note that you can list a team's indices with `getRedTeamIndices`, or test membership with `isOnRedTeam`.
@@ -233,24 +236,23 @@ To get started designing your own agent, we recommend subclassing the `CaptureAg
         """
 ```
 
-### Restrictions: 
+### Restrictions:
 
 You are free to use any techniques you want, but will need to respect the provided APIs to have a valid submission. Agents which compute during the opponent's turn will be disqualified. In particular, any form of multi-threading is disallowed, because we have found it very hard to ensure that no computation takes place on the opponent's turn.
 
-### Warning: 
+### Warning:
 
 If one of your agents produces any `stdout`/`stderr` output during its games in the any tournament (preliminary or final), that output will be included in the contest results posted on the website. Additionally, in some cases a stack trace may be shown among this output in the event that one of your agents throws an exception. You should design your code in such a way that this does not expose any information that you wish to keep confidential.
-
 
 ## Official Tournaments
 
 ### Infrastructure:
 
-The actual competitions will be run using nightly automated tournaments on an Amazon EC2 like cluster (1.7 Ghz Xeon / 1.7GB RAM machines in the [Nectar Cloud](https://nectar.org.au/)), with the final tournament deciding the final contest outcome. See the submission instructions for details of how to enter a team into the tournaments via git tagging. 
+The actual competitions will be run using nightly automated tournaments on an Amazon EC2 like cluster (1.7 Ghz Xeon / 1.7GB RAM machines in the [Nectar Cloud](https://nectar.org.au/)), with the final tournament deciding the final contest outcome. See the submission instructions for details of how to enter a team into the tournaments via git tagging.
 
-We will try to run **pre-contest feedback tournaments frequently**, if possible every day. The number of games each team plays every other team will depend on the number of teams. To reduce randomness, the final contest after submission will include more runs. 
+We will try to run **pre-contest feedback tournaments frequently**, if possible every day. The number of games each team plays every other team will depend on the number of teams. To reduce randomness, the final contest after submission will include more runs.
 
-The **layouts** used in the tournament will be drawn from both the default layouts as well as randomly generated layouts each night. All layouts are symmetric, and the team that moves first is randomly chosen. 
+The **layouts** used in the tournament will be drawn from both the default layouts as well as randomly generated layouts each night. All layouts are symmetric, and the team that moves first is randomly chosen.
 
 The **results** of each tournament (pre-contest, preliminary, and final) will be published on a web-page where you will be able to see the overall rankings and scores for each match. You can also download replays, the layouts used, and the `stdout`/`stderr` logs for each agent.
 
@@ -258,7 +260,7 @@ The **results** of each tournament (pre-contest, preliminary, and final) will be
 
 * Your code will be run by the following command:
 
-    ```bash
+    ```shell
     python3 capture.py --delay 0.0 -r teams/<team1>/myTeam.py -b teams/<team2>/myTeam.py
     ```
 
@@ -266,15 +268,15 @@ The **results** of each tournament (pre-contest, preliminary, and final) will be
 
 * You may have coded supported files that you will import in your `myTeam.py`, for example a module  `abc.py`. In order for the contest script to find it you need to do it this way:
 
-```python
-import os
-import sys
+  ```python
+  import os
+  import sys
 
-cd = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(cd)
+  cd = os.path.dirname(os.path.abspath(__file__))
+  sys.path.append(cd)
 
-import abc 
-```
+  import abc 
+  ```
 
 If you do not append that to the sys path, your `abc.py` module will not be found and your agent will crash.
 
