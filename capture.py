@@ -58,9 +58,12 @@ from game import Grid
 from game import Configuration
 from game import Agent
 from game import reconstituteGrid
-import sys, util, types, time, random, imp
+import sys, util, types, time, random
 import keyboardAgents
 import os
+
+import importlib
+import pathlib
 
 DIR_SCRIPT = sys.path[0]
 
@@ -954,28 +957,39 @@ def randomLayout(seed = None):
   return mazeGenerator.generateMaze(seed)
 
 import traceback
-def loadAgents(isRed, factory, textgraphics, cmdLineArgs):
+def loadAgents(isRed, agent_file, textgraphics, cmdLineArgs):
   "Calls agent factories and returns lists of agents"
   try:
-    if not factory.endswith(".py"):
-      factory += ".py"
-    
-    print(factory)
-    module = imp.load_source('player' + str(int(isRed)), factory)
+    if not agent_file.endswith(".py"):
+      agent_file += ".py"
+
+    moduleName = pathlib.Path(agent_file).stem
+    agent_file = os.path.abspath(agent_file)
+
+    # just in case other files not in the distribution are loaded
+    sys.path.append(os.path.split(agent_file)[0])
+
+    print(f"Loading agent team: {agent_file}")
+
+    # SS: new way of loading Python modules - Python 3.4+
+    loader = importlib.machinery.SourceFileLoader(moduleName, agent_file)
+    spec = importlib.util.spec_from_loader(moduleName, loader)
+    module = importlib.util.module_from_spec(spec)
+    loader.exec_module(module)  # will be added to sys.modules dict
+
   except (NameError, ImportError):
-    print('Error: The team "' + factory + '" could not be loaded! ', file=sys.stderr)
+    print('Error: The team "' + agent_file + '" could not be loaded! ', file=sys.stderr)
     traceback.print_exc()
     return [None for i in range(2)]
   except IOError:
-    print('Error: The team "' + factory + '" could not be loaded! ', file=sys.stderr)
+    print('Error: The team "' + agent_file + '" could not be loaded! ', file=sys.stderr)
     traceback.print_exc()
     return [None for i in range(2)]
 
   args = dict()
   args.update(cmdLineArgs)  # Add command line args with priority
 
-  print ("Loading Team:", factory)
-  print ("Arguments:", args)
+  print ("\tArguments:", args)
 
   # if textgraphics and factoryClassName.startswith('Keyboard'):
   #   raise Exception('Using the keyboard requires graphics (no text display, quiet or training games)')
@@ -983,7 +997,7 @@ def loadAgents(isRed, factory, textgraphics, cmdLineArgs):
   try:
     createTeamFunc = getattr(module, 'createTeam')
   except AttributeError:
-    print('Error: The team "' + factory + '" could not be loaded! ', file=sys.stderr)
+    print('Error: The team "' + agent_file + '" could not be loaded! ', file=sys.stderr)
     traceback.print_exc()
     return [None for i in range(2)]
 
