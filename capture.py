@@ -664,7 +664,10 @@ class AgentRules:
       # generate successors
       positionQueue = positionQueue + genSuccessors(x, y)
 
-    state.data._foodAdded = foodAdded
+    if state.data._foodAdded is None:
+      state.data._foodAdded = foodAdded
+    else:
+      state.data._foodAdded.extend(foodAdded)
     # now our agentState is no longer carrying food
     agentState.numCarrying = 0
     pass
