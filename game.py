@@ -25,6 +25,7 @@ import time, os
 import traceback
 import sys
 
+from frozendict import frozendict
 #######################
 # Parts worth reading #
 #######################
@@ -289,11 +290,11 @@ class Actions:
     A collection of static methods for manipulating move actions.
     """
     # Directions
-    _directions = {Directions.NORTH: (0, 1),
+    _directions  = frozendict({Directions.NORTH: (0, 1),
                    Directions.SOUTH: (0, -1),
                    Directions.EAST:  (1, 0),
                    Directions.WEST:  (-1, 0),
-                   Directions.STOP:  (0, 0)}
+                   Directions.STOP:  (0, 0)})
 
     _directionsAsList = _directions.items()
 
