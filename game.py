@@ -25,6 +25,9 @@ import time, os
 import traceback
 import sys
 
+# https://github.com/slezica/python-frozendict 
+# was rejected from PEP but may be considered soon:
+#   https://www.python.org/dev/peps/pep-0603/
 from frozendict import frozendict
 #######################
 # Parts worth reading #
