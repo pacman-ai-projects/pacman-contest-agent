@@ -25,6 +25,10 @@ import time, os
 import traceback
 import sys
 
+import asyncio
+import copy
+from async_timeout import timeout
+
 # https://github.com/slezica/python-frozendict 
 # was rejected from PEP but may be considered soon:
 #   https://www.python.org/dev/peps/pep-0603/
@@ -615,6 +619,11 @@ class Game:
         agentIndex = self.startingIndex
         numAgents = len( self.agents )
 
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self._start(agentIndex, numAgents, delay))
+
+
+    async def _start(self, agentIndex, numAgents, delay):
         while not self.gameOver:
             time.sleep(delay)
             # Fetch the next agent
@@ -626,18 +635,39 @@ class Game:
                 self.mute(agentIndex)
                 if self.catchExceptions:
                     try:
-                        timed_func = TimeoutFunction(agent.observationFunction, int(self.rules.getMoveTimeout(agentIndex)))
-                        try:
-                            start_time = time.time()
-                            observation = timed_func(self.state.deepCopy())
-                        except TimeoutFunctionException:
-                            skip_action = True
+                        start_time = time.time()
+                        async with timeout(self.rules.getMoveTimeout(agentIndex)) as process:
+                            print(f"Requesting action for time agent {agentIndex}.")
+
+                            # Ideally, copy should be implemented within the state class to only copy relevant variables.
+                            observation = await agent.observationFunction(self.state.deepCopy())
+
+                            print(f"Received observation {observation}.")
                         move_time += time.time() - start_time
                         self.unmute()
+                    except asyncio.TimeoutError as e:
+                        print(f"Asyncio got a timeout!")
+                        skip_action = True
                     except Exception as data:
                         self._agentCrash(agentIndex, quiet=False)
                         self.unmute()
                         return
+
+
+                    # # Old solution  using signal to do timeouts via exceptions
+                    # try:
+                    #     timed_func = TimeoutFunction(agent.observationFunction, int(self.rules.getMoveTimeout(agentIndex)))
+                    #     try:
+                    #         start_time = time.time()
+                    #         observation = timed_func(self.state.deepCopy())
+                    #     except TimeoutFunctionException:
+                    #         skip_action = True
+                    #     move_time += time.time() - start_time
+                    #     self.unmute()
+                    # except Exception as data:
+                    #     self._agentCrash(agentIndex, quiet=False)
+                    #     self.unmute()
+                    #     return
                 else:
                     observation = agent.observationFunction(self.state.deepCopy())
                 self.unmute()
