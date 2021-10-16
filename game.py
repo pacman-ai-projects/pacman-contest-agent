@@ -638,8 +638,8 @@ class Game:
                         # Ideally, copy should be implemented within the state class to only copy relevant variables.
                         observation = await agent.observationFunction(self.state.deepCopy())
 
-                        print(f"Received observation for agent {agentIndex}:\n{observation}.")
-                    move_time += time.time() - start_time
+                        move_time += time.time() - start_time
+                        print(f"Received observation for agent {agentIndex} after {move_time:1.5f} secs:\n{observation}.")
                     self.unmute()
                 except asyncio.TimeoutError as e:
                     print(f"Asyncio got a timeout at observation time from agent {agentIndex}!")
@@ -674,11 +674,19 @@ class Game:
                 try:    # this is just for the time out exception
                     if skip_action:
                         raise TimeoutFunctionException()
-                    async with timeout(self.rules.getMoveTimeout(agentIndex) - move_time) as process:
-                        start_time = time.time()
 
-                        action = await agent.getAction(observation)
-                        print(f"Received action for {agentIndex}: {action}.")
+                    start_time = time.time()
+                    action = await asyncio.wait_for(agent.getAction(observation), self.rules.getMoveTimeout(agentIndex) - move_time)
+                    action_time = time.time() - start_time
+
+
+                    # with timeout(self.rules.getMoveTimeout(agentIndex) - move_time) as process:
+                    #     start_time = time.time()
+                    #     action = await agent.getAction(observation)
+                    #     action_time = time.time() - start_time
+
+
+                    print(f"Received action for {agentIndex} in {action_time:1.2f} secs (total {move_time:1.5f} secs): {action}.")
                     self.unmute()
                 except asyncio.TimeoutError as e:
                     print(f"Asyncio got a timeout from agent {agentIndex} at action selection!")
@@ -706,7 +714,6 @@ class Game:
                 #         self.unmute()
                 #         return
 
-                move_time += time.time() - start_time
 
                 if move_time > self.rules.getMoveWarningTime(agentIndex):
                     self.totalAgentTimeWarnings[agentIndex] += 1
