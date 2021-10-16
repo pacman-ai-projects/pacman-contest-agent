@@ -290,7 +290,7 @@ class CaptureAgent(Agent):
       self._distributions = dists # These can be read by pacclient.py
 
 
-class TimeoutAgent( Agent ):
+class TimeoutAgent(Agent):
   """
   A random agent that takes too much time. Taking
   too much time results in penalties and random moves.

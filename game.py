@@ -638,7 +638,7 @@ class Game:
                         # Ideally, copy should be implemented within the state class to only copy relevant variables.
                         observation = await agent.observationFunction(self.state.deepCopy())
 
-                        print(f"Received observation for agent {agentIndex}: {observation}.")
+                        print(f"Received observation for agent {agentIndex}:\n{observation}.")
                     move_time += time.time() - start_time
                     self.unmute()
                 except asyncio.TimeoutError as e:
@@ -677,7 +677,7 @@ class Game:
                     async with timeout(self.rules.getMoveTimeout(agentIndex) - move_time) as process:
                         start_time = time.time()
 
-                        action = await agent.agent.getAction(observation)
+                        action = await agent.getAction(observation)
                         print(f"Received action for {agentIndex}: {action}.")
                     self.unmute()
                 except asyncio.TimeoutError as e:
