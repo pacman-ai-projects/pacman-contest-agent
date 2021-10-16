@@ -40,7 +40,7 @@ class RandomAgent( Agent ):
   def __init__( self, index ):
     self.index = index
 
-  def getAction( self, state ):
+  async def getAction( self, state ):
     return random.choice( state.getLegalActions( self.index ) )
 
 class CaptureAgent(Agent):
@@ -119,7 +119,7 @@ class CaptureAgent(Agent):
     """
     self.agentsOnTeam = agentsOnTeam
 
-  def observationFunction(self, gameState):
+  async def observationFunction(self, gameState):
     " Changing this won't affect pacclient.py, but will affect capture.py "
     return gameState.makeObservation(self.index)
 
@@ -142,7 +142,7 @@ class CaptureAgent(Agent):
   # Action Choice #
   #################
 
-  def getAction(self, gameState):
+  async def getAction(self, gameState):
     """
     Calls chooseAction on a grid position, but continues on half positions.
     If you subclass CaptureAgent, you shouldn't need to override this method.  It
@@ -298,7 +298,7 @@ class TimeoutAgent( Agent ):
   def __init__( self, index ):
     self.index = index
 
-  def getAction( self, state ):
+  async def getAction( self, state ):
     import random, time
     time.sleep(2.0)
     return random.choice( state.getLegalActions( self.index ) )
