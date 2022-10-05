@@ -48,6 +48,13 @@ The keys are
   P1: 'a', 's', 'd', and 'w' to move
   P2: 'l', ';', ',' and 'p' to move
 """
+import sys, util, types, time, random
+import os
+import importlib
+import pathlib
+import platform
+import datetime
+
 from game import GameStateData
 from game import Game
 from game import Directions
@@ -58,12 +65,7 @@ from game import Grid
 from game import Configuration
 from game import Agent
 from game import reconstituteGrid
-import sys, util, types, time, random
 import keyboardAgents
-import os
-
-import importlib
-import pathlib
 
 DIR_SCRIPT = sys.path[0]
 
@@ -867,6 +869,9 @@ def readCommand( argv ):
   if options.recordLog:
     sys.stdout = open('log-0', 'w')
     sys.stderr = sys.stdout
+
+  now = datetime.datetime.now()
+  print(f'Running on node {platform.node()} at {now.strftime("%Y-%m-%d %H:%M:%S")}')
 
   # Special case: recorded games don't use the runGames method or args structure
   if options.replay != None:
