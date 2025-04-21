@@ -51,6 +51,7 @@ The keys are
 import sys, util, types, time, random
 import os
 import importlib
+import importlib.util
 import pathlib
 import platform
 import datetime
